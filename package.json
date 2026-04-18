@@ -4,21 +4,21 @@
   "version": "3.7.32",
   "description": "AI research agent rooted in your Zotero library",
   "config": {
-    "addonName": "llm-for-zotero",
-    "addonID": "zotero-llm@github.com.yilewang",
-    "addonRef": "llmforzotero",
-    "addonInstance": "LLMForZotero",
-    "prefsPrefix": "extensions.zotero.llmforzotero"
+    "addonName": "LLM for Zotero (Linn60)",
+    "addonID": "zotero-llm@github.com.Linn60",
+    "addonRef": "linn60llmforzotero",
+    "addonInstance": "Linn60LLMForZotero",
+    "prefsPrefix": "extensions.zotero.linn60llmforzotero"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yilewang/llm-for-zotero.git"
+    "url": "git+https://github.com/Linn60/llm-for-zotero.git"
   },
   "author": "Yile Wang",
   "bugs": {
-    "url": "https://github.com/yilewang/llm-for-zotero/issues"
+    "url": "https://github.com/Linn60/llm-for-zotero/issues"
   },
-  "homepage": "https://github.com/yilewang/llm-for-zotero#readme",
+  "homepage": "https://github.com/Linn60/llm-for-zotero#readme",
   "license": "AGPL-3.0-or-later",
   "scripts": {
     "start": "zotero-plugin serve",

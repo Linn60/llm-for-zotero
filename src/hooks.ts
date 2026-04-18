@@ -125,7 +125,7 @@ async function onMainWindowLoad(win: _ZoteroTypes.MainWindow): Promise<void> {
   const keyset = doc.getElementById("mainKeyset");
   if (keyset) {
     const key = doc.createXULElement("key");
-    key.id = "llmforzotero-key-standalone";
+    key.id = "linn60llmforzotero-key-standalone";
     key.setAttribute("modifiers", "accel,shift");
     key.setAttribute("key", "L");
     key.setAttribute("oncommand", "void(0)");
@@ -148,8 +148,8 @@ async function onMainWindowUnload(win: Window): Promise<void> {
   ztoolkit.unregisterAll();
   addon.data.dialog?.window?.close();
   addon.data.standaloneWindow?.close();
-  win.document.getElementById("llmforzotero-open-standalone")?.remove();
-  win.document.getElementById("llmforzotero-key-standalone")?.remove();
+  win.document.getElementById("linn60llmforzotero-open-standalone")?.remove();
+  win.document.getElementById("linn60llmforzotero-key-standalone")?.remove();
 }
 
 function onShutdown(): void {

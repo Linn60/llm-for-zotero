@@ -82,8 +82,8 @@ const PAGE_CONTAINER_SELECTOR = [
   "[data-page-number]",
   "[data-page-index]",
 ].join(", ");
-const PAGE_FLASH_STYLE_ID = "llmforzotero-page-flash-style";
-const PAGE_FLASH_CLASS = "llmforzotero-page-flash";
+const PAGE_FLASH_STYLE_ID = "linn60llmforzotero-page-flash-style";
+const PAGE_FLASH_CLASS = "linn60llmforzotero-page-flash";
 
 const SEARCH_WORD_PATTERN = /[a-z0-9]+/g;
 const COMMON_SEARCH_STOP_WORDS = new Set([
@@ -369,7 +369,7 @@ function ensurePageFlashStyle(doc: Document): void {
   const style = doc.createElement("style");
   style.id = PAGE_FLASH_STYLE_ID;
   style.textContent = `
-    @keyframes llmforzoteroPageFlashPulse {
+    @keyframes linn60llmforzoteroPageFlashPulse {
       0%, 100% {
         box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
         background-color: rgba(37, 99, 235, 0);
@@ -385,7 +385,7 @@ function ensurePageFlashStyle(doc: Document): void {
     }
 
     .${PAGE_FLASH_CLASS} {
-      animation: llmforzoteroPageFlashPulse 0.75s ease-in-out 2;
+      animation: linn60llmforzoteroPageFlashPulse 0.75s ease-in-out 2;
       border-radius: 6px;
     }
   `;

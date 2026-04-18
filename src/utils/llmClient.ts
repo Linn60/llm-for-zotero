@@ -5,7 +5,7 @@
  */
 
 import { config } from "../../package.json";
-import { DEFAULT_SYSTEM_PROMPT } from "./llmDefaults";
+import { resolveSystemPrompt } from "./llmDefaults";
 import {
   getAnthropicReasoningProfileForModel,
   getGeminiReasoningProfileForModel,
@@ -289,9 +289,7 @@ function getApiConfig(overrides?: {
     authMode,
     model,
     embeddingModel,
-    systemPrompt: customSystemPrompt
-      ? `${DEFAULT_SYSTEM_PROMPT}\n\n${customSystemPrompt}`
-      : DEFAULT_SYSTEM_PROMPT,
+    systemPrompt: resolveSystemPrompt(customSystemPrompt),
     providerProtocol,
   };
 }
@@ -1159,7 +1157,7 @@ function buildManualMultipartBody(params: {
   bytes: Uint8Array;
 }): { body: Uint8Array; contentType: string } {
   const encoder = new TextEncoder();
-  const boundary = `----llmforzotero-${Date.now().toString(16)}-${Math.random().toString(16).slice(2)}`;
+  const boundary = `----linn60llmforzotero-${Date.now().toString(16)}-${Math.random().toString(16).slice(2)}`;
   const safePurpose = toSafeMultipartToken(params.purpose);
   const safeFileName = toSafeMultipartToken(params.fileName);
   const safeMimeType = toSafeMultipartToken(params.mimeType);
@@ -1465,9 +1463,7 @@ export function estimateAvailableContextBudget(params: {
       image: params.image,
       images: params.images,
     },
-    params.systemPrompt
-      ? `${DEFAULT_SYSTEM_PROMPT}\n\n${params.systemPrompt}`
-      : DEFAULT_SYSTEM_PROMPT,
+    resolveSystemPrompt(params.systemPrompt),
   );
   const baseInputTokens = estimateConversationTokens(baseMessages);
   const contextBudgetTokens = Math.max(

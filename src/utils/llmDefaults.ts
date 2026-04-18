@@ -23,3 +23,10 @@ When answering questions:
 - For tables, use markdown table syntax with pipes and a header divider row
 - If you don't have enough information to answer, say so clearly
 - Provide actionable insights when possible`;
+
+export function resolveSystemPrompt(
+  customSystemPrompt?: string | null,
+): string {
+  const overridePrompt = (customSystemPrompt || "").trim();
+  return overridePrompt || DEFAULT_SYSTEM_PROMPT;
+}

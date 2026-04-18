@@ -9795,7 +9795,7 @@ export function setupHandlers(
       const panel = panelDoc.querySelector("#llm-main") as HTMLElement | null;
       if (!panel) return null;
       // In standalone window, accept events from anywhere in the document
-      const standaloneRoot = panelDoc.getElementById("llmforzotero-standalone-chat-root") as HTMLElement | null;
+      const standaloneRoot = panelDoc.getElementById("linn60llmforzotero-standalone-chat-root") as HTMLElement | null;
       if (standaloneRoot) return panel;
       const target = event.target as Node | null;
       const activeEl = panelDoc.activeElement;
@@ -9828,7 +9828,7 @@ export function setupHandlers(
       event.stopPropagation();
       applyPanelFontScale(panel);
       // Also scale the standalone root so sidebar/tabs/title scale together
-      const standaloneRoot = panelDoc.getElementById("llmforzotero-standalone-chat-root") as HTMLElement | null;
+      const standaloneRoot = panelDoc.getElementById("linn60llmforzotero-standalone-chat-root") as HTMLElement | null;
       if (standaloneRoot) applyPanelFontScale(standaloneRoot);
     };
 

@@ -115,7 +115,7 @@ describe("llmClient prepareChatRequest", function () {
     (
       globalThis.Zotero.Prefs as { set: (key: string, value: unknown) => void }
     ).set(
-      "extensions.zotero.llmforzotero.systemPrompt",
+      "extensions.zotero.linn60llmforzotero.systemPrompt",
       "You are a custom paper analyst.",
     );
     (
@@ -188,6 +188,10 @@ describe("llmClient prepareChatRequest", function () {
       String(messages[0]?.content || ""),
       "You are a custom paper analyst.",
     );
+    assert.notInclude(
+      String(messages[0]?.content || ""),
+      "You are an intelligent research assistant integrated into Zotero.",
+    );
     assert.include(String(messages[0]?.content || ""), "Document Context:");
     assert.include(
       String(messages[0]?.content || ""),
@@ -211,8 +215,8 @@ describe("llmClient prepareChatRequest", function () {
       key: string,
       value: unknown,
     ) => void;
-    setPref("extensions.zotero.llmforzotero.embeddingProvider", "");
-    setPref("extensions.zotero.llmforzotero.embeddingApiBase", "");
+    setPref("extensions.zotero.linn60llmforzotero.embeddingProvider", "");
+    setPref("extensions.zotero.linn60llmforzotero.embeddingApiBase", "");
     try {
       await callEmbeddings(["hello"]);
       assert.fail("expected callEmbeddings to throw");
@@ -229,17 +233,17 @@ describe("llmClient prepareChatRequest", function () {
       key: string,
       value: unknown,
     ) => void;
-    setPref("extensions.zotero.llmforzotero.embeddingProvider", "openai");
-    setPref("extensions.zotero.llmforzotero.embeddingApiBase", "https://api.openai.com/v1");
-    setPref("extensions.zotero.llmforzotero.embeddingApiKey", "sk-first");
-    setPref("extensions.zotero.llmforzotero.embeddingModel", "text-embedding-3-small");
+    setPref("extensions.zotero.linn60llmforzotero.embeddingProvider", "openai");
+    setPref("extensions.zotero.linn60llmforzotero.embeddingApiBase", "https://api.openai.com/v1");
+    setPref("extensions.zotero.linn60llmforzotero.embeddingApiKey", "sk-first");
+    setPref("extensions.zotero.linn60llmforzotero.embeddingModel", "text-embedding-3-small");
     const initial = getResolvedEmbeddingConfig();
 
-    setPref("extensions.zotero.llmforzotero.embeddingApiBase", "https://proxy.example/v1");
+    setPref("extensions.zotero.linn60llmforzotero.embeddingApiBase", "https://proxy.example/v1");
     const endpointChanged = getResolvedEmbeddingConfig();
 
-    setPref("extensions.zotero.llmforzotero.embeddingApiBase", "https://api.openai.com/v1");
-    setPref("extensions.zotero.llmforzotero.embeddingApiKey", "sk-second");
+    setPref("extensions.zotero.linn60llmforzotero.embeddingApiBase", "https://api.openai.com/v1");
+    setPref("extensions.zotero.linn60llmforzotero.embeddingApiKey", "sk-second");
     const keyChanged = getResolvedEmbeddingConfig();
 
     assert.notEqual(initial.providerKey, endpointChanged.providerKey);
@@ -247,9 +251,9 @@ describe("llmClient prepareChatRequest", function () {
   });
 
   it("refreshes codex auth token on 401 and retries once", async function () {
-    const prefsKey = "extensions.zotero.llmforzotero.modelProviderGroups";
+    const prefsKey = "extensions.zotero.linn60llmforzotero.modelProviderGroups";
     const versionKey =
-      "extensions.zotero.llmforzotero.modelProviderGroupsMigrationVersion";
+      "extensions.zotero.linn60llmforzotero.modelProviderGroupsMigrationVersion";
     (globalThis.Zotero.Prefs as { set: (key: string, value: unknown) => void }).set(
       prefsKey,
       JSON.stringify([

@@ -227,7 +227,7 @@ const zhCN: Record<string, string> = {
   "MinerU": "MinerU",
   "Custom System Prompt (Optional)": "自定义系统提示词（可选）",
   "Custom instructions for the AI assistant...": "为 AI 助手设置自定义指令...",
-  "Add custom instructions to the default system prompt (leave empty to use default only)": "在默认系统提示词基础上添加自定义指令（留空则仅使用默认）",
+  "Replace the default system prompt with custom instructions (leave empty to use default)": "用自定义指令覆盖默认系统提示词（留空则使用默认）",
   "View default system prompt": "查看默认系统提示词",
   'Show "Add Text" in reader selection popup': '在阅读器选区弹出菜单中显示"添加文本"',
   "Disable this if you prefer not to show the Add Text option in Zotero's text selection popup menu.": '如果你不想在 Zotero 文本选区弹出菜单中显示"添加文本"选项，请禁用此项。',
@@ -328,7 +328,7 @@ let currentLocale: string = "auto";
 export function initI18n(): void {
   try {
     const pref = Zotero.Prefs.get(
-      "extensions.zotero.llmforzotero.locale",
+      "extensions.zotero.linn60llmforzotero.locale",
       true,
     );
     currentLocale = typeof pref === "string" ? pref : "auto";

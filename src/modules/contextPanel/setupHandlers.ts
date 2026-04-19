@@ -176,6 +176,7 @@ import {
   setPaperContentSourceOverride,
   clearPaperContentSourceOverrides,
   getNextContentSourceMode,
+  resolveDefaultPaperContentSourceMode,
   clearSelectedPaperState,
   clearAllRefContextState,
 } from "./contexts/paperContextState";
@@ -1587,10 +1588,13 @@ export function setupHandlers(
     itemId: number,
     paperContext: PaperContextRef,
   ): PaperContentSourceMode => {
-    // [webchat] Always use PDF content source — webchat sends raw PDF via drag-and-drop
-    if (isWebChatMode()) return "pdf";
     const explicit = getPaperContentSourceOverride(itemId, paperContext);
-    return explicit || (isPaperContextMineru(paperContext) ? "mineru" : "text");
+    if (explicit) return explicit;
+    return resolveDefaultPaperContentSourceMode({
+      isWebChat: isWebChatMode(),
+      runtimeMode: getCurrentRuntimeMode(),
+      hasMinerU: isPaperContextMineru(paperContext),
+    });
   };
 
   // getNextContentSourceMode → imported from ./contexts/paperContextState

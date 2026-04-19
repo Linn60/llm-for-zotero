@@ -94,6 +94,18 @@ export function getNextContentSourceMode(
   return current === "pdf" ? "text" : "pdf";
 }
 
+export function resolveDefaultPaperContentSourceMode(params: {
+  isWebChat: boolean;
+  runtimeMode: "chat" | "agent";
+  hasMinerU: boolean;
+}): PaperContentSourceMode {
+  if (params.isWebChat) return "pdf";
+  if (params.runtimeMode === "chat") {
+    return params.hasMinerU ? "mineru" : "pdf";
+  }
+  return params.hasMinerU ? "mineru" : "text";
+}
+
 // ── State clearing ──────────────────────────────────────────────────────────
 
 export function clearSelectedPaperState(itemId: number): void {
